@@ -1,3 +1,4 @@
+require "pry"
 class Artist
   attr_accessor :name, :songs
 
@@ -11,6 +12,9 @@ class Artist
   def add_song (new_song)
     songs << new_song
     new_song.artist = self
+    # anyone can call themselves an artist but once an artist has a song, they are really an artist and we save them
+#    binding.pry
+    save
   end
 
   def print_songs
@@ -18,6 +22,7 @@ class Artist
   end
 
   def save
+  #  binding.pry
     @@all << self if !Artist.find_by_name(name)
   end
 
